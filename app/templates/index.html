@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prediksi Produksi Telur</title>
+  </head>
+  <body>
+    <h2>Input Data</h2>
+
+    <table>
+      <form action="/predict" method="POST">
+        <tr>
+          <td>
+            <label>Temperature:</label>
+          </td>
+          <td>
+            <input type="text" name="temperature" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>Ammonia:</label>
+          </td>
+          <td>
+            <input type="text" name="ammonia" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>Amount of Feeding:</label>
+          </td>
+          <td>
+            <input type="text" name="feeding" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button type="submit">Prediksi</button>
+          </td>
+        </tr>
+      </form>
+    </table>
+
+    {% if result %}
+    <h3>Hasil Prediksi Produksi Telur: {{ result }}</h3>
+    {% endif %}
+  </body>
+</html>
