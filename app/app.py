@@ -30,6 +30,7 @@ def predict():
     temp = float(request.form['temperature'])
     ammonia = float(request.form['ammonia'])
     feed = float(request.form['feeding'])
+    chickens = float(request.form['chickens'])
 
     # Gabungkan input
     user_input = np.array([[temp, ammonia, feed]])
@@ -42,8 +43,11 @@ def predict():
     hidden_output = sigmoid(hidden_input)
     final_output = sigmoid(np.dot(hidden_output, W2) + b2)
 
-    # Kembalikan ke skala asli
-    prediction = scaler_y.inverse_transform(final_output)[0][0]
+    # Prediksi per ayam
+    egg_per_chicken = scaler_y.inverse_transform(final_output)[0][0]
+
+    # Total telur
+    prediction = egg_per_chicken * chickens
 
     return render_template("index.html", result=round(prediction, 2))
 

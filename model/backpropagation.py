@@ -12,10 +12,12 @@ data = pd.read_csv("Egg_Production.csv")
 print("Data Awal:")
 print(data.head())
 
+data['Egg_per_Chicken'] = data['Total_egg_production'] / data['Amount_of_chicken']
+
 # X -> Value temperatur, amonia, banyaknya diberi pakan
 # y -> Value produksi telur
 X = data[['Temperature', 'Ammonia', 'Amount_of_Feeding']].values
-y = data[['Total_egg_production']].values
+y = data[['Egg_per_Chicken']].values
 
 # Normalisasi data (0-1)
 scaler_X = MinMaxScaler()
