@@ -2,52 +2,37 @@
 <html>
   <head>
     <title>Prediksi Produksi Telur</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
   </head>
+
   <body>
-    <h2>Input Data</h2>
+    <div class="container">
+      <h2>Prediksi Produksi Telur</h2>
 
-    <table>
-      <form action="/predict" method="POST">
-        <tr>
-          <td>
-            <label>Temperature:</label>
-          </td>
-          <td>
-            <input type="text" name="temperature" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label>Ammonia:</label>
-          </td>
-          <td>
-            <input type="text" name="ammonia" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label>Amount of Feeding:</label>
-          </td>
-          <td>
-            <input type="text" name="feeding" required />
-          </td>
-        </tr>
-        <tr>
-          <td>Amount of Chicken:</td>
-          <td>
-            <input type="text" name="chickens" required />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <button type="submit">Prediksi</button>
-          </td>
-        </tr>
+      <form action="/predict" method="POST" class="form-box">
+        <label>Temperatur (°C)</label>
+        <input type="text" name="temperature" required />
+
+        <label>Ammonia (ppm)</label>
+        <input type="text" name="ammonia" required />
+
+        <label>Jumlah Pakan per Ayam (gr)</label>
+        <input type="text" name="feeding" required />
+
+        <label>Jumlah Ayam</label>
+        <input type="text" name="chickens" required />
+
+        <button type="submit">Prediksi</button>
       </form>
-    </table>
 
-    {% if result %}
-    <h3>Hasil Prediksi Produksi Telur: {{ result }}</h3>
-    {% endif %}
+      {% if result %}
+      <div class="result-box">
+        <h3>Hasil Prediksi Produksi Telur: {{ result }}</h3>
+      </div>
+      {% endif %}
+    </div>
   </body>
 </html>
